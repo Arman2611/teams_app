@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "e41f9158-765a-4104-abe0-60d136c459d6",
+		"name": "Teams_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "Get all teams list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Get all teams list"
+					},
+					"response": []
+				},
+				{
+					"name": "Get team data by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/teams/02dfa828-c3a6-4e8e-a282-968a77cae341",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams",
+								"02dfa828-c3a6-4e8e-a282-968a77cae341"
+							]
+						},
+						"description": "Get team data by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new team (Manchester United)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Manchester United\",\r\n    \"league\": \"Premier League\",\r\n    \"date_of_foundation\": \"1902-04-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Create new team"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new team (AC Milan)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "AC Milan",
+									"type": "text"
+								},
+								{
+									"key": "league",
+									"value": "Serie A",
+									"type": "text"
+								},
+								{
+									"key": "date_of_foundation",
+									"value": "1899-12-16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Create new team (AC Milan)"
+					},
+					"response": []
+				},
+				{
+					"name": "Alter a team",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"team_id\": \"02dfa828-c3a6-4e8e-a282-968a77cae341\",\r\n    \"name\": \"Man Utd\",\r\n    \"league\": \"Sky Bet Championship\",\r\n    \"date_of_foundation\": \"1924-04-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Alter a team"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a team",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"team_id\": \"5dbefdda-52a3-46a3-a04f-c498bb067ef7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Delete a team"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "localhost:3000"
+		}
+	]
+}

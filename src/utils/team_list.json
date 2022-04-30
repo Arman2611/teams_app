@@ -1,0 +1,27 @@
+[
+	{
+		"name" : "Manchester United",
+		"league" : "Premier League",
+		"date_of_foundation": "1902-04-24"
+	},
+	{
+		"name" : "Liverpool",
+		"league" : "Premier League",
+		"date_of_foundation": "1892-06-03"
+	},
+	{
+		"name" : "AC Milan",
+		"league" : "Serie A",
+		"date_of_foundation": "1899-12-16"
+	},
+	{
+		"name" : "FC Barcelona",
+		"league" : "La Liga Santander",
+		"date_of_foundation": "1899-11-29"
+	},
+	{
+		"name" : "Real Madrid",
+		"league" : "La Liga Santander",
+		"date_of_foundation": "1902-03-06"
+	}
+]

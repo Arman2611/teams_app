@@ -1,0 +1,20 @@
+#PostgreSQL cloud details
+
+Website _ elephantsql.com
+Login using github arman2611
+
+Database link _ https://api.elephantsql.com/console/15e5c7e1-e34f-49b6-9694-6f033ac657d2/details?
+
+#Connecting with pg module
+
+// PostgreSQL database
+const {Pool, Client} = require('pg');
+
+// connect to PostgreSQL database (without sequelize)
+/*const client = new Client({
+	user: process.env.USER_NAME,
+	host: process.env.HOST,
+	database: process.env.DATABASE_NAME,
+	password: process.env.DATABASE_PASSWORD,
+});
+await client.connect();*/
