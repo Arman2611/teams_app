@@ -3,14 +3,10 @@ module.exports = (sequelize) => {
 
 	// Models
 	const Team = require('../models/team')(sequelize);
-	// const Match = require('../models/match')(sequelize);
-	// const Score = require('../models/score')(sequelize);
-	// const team_matches = require('../models/team_matches')(sequelize);
-	// const match_scores = require('../models/match_scores')(sequelize);
 
 	async function getTeamsList (ctx, next) {
 		try {
-			await Team.sync();
+			await Team.sync( {alter: true} );
 
 			// Read teams list from database
 			const teams = await Team.findAll();
@@ -26,7 +22,7 @@ module.exports = (sequelize) => {
 
 	async function getTeamById (ctx, next) {
 		try {
-			await Team.sync();
+			await Team.sync( {alter: true} );
 
 			// Check if team with given id exists on database
 			const team = await Team.findOne({ 
@@ -45,14 +41,19 @@ module.exports = (sequelize) => {
 			}
 
 		} catch(err) {
-			ctx.status = 500;
-			ctx.body = 'Failed to get team data'
+			if (err.message.includes('invalid input syntax')) {
+				ctx.status = 400;
+				ctx.body = 'Invalid team_id format';
+			} else {
+				ctx.status = 500;
+				ctx.body = 'Failed to get team data';
+			}
 		}
 	};
 
 	async function createTeam (ctx, next) {
 		try {
-			await Team.sync();
+			await Team.sync( {alter: true} );
 
 			// Check if team with given name exists in base
 			const team = await Team.findOne({ 
@@ -62,10 +63,11 @@ module.exports = (sequelize) => {
 			// If there is no team on database with such name
 			if (team === null) {
 				// Create a team
-				const user1 = await Team.create({
+				const user = await Team.create({
 					name: ctx.request.body.name,
 					league: ctx.request.body.league,
-					date_of_foundation: new Date(ctx.request.body.date_of_foundation).toISOString()
+					date_of_foundation: new Date(ctx.request.body.date_of_foundation).toISOString(),
+					matches: JSON.stringify([])
 				});
 				await Team.sync();
 
@@ -84,7 +86,7 @@ module.exports = (sequelize) => {
 
 	async function alterTeam (ctx, next) {
 		try {
-			await Team.sync();
+			await Team.sync( {alter: true} );
 
 			// Check if team with given id exists on database
 			const team = await Team.findOne({ 
@@ -113,7 +115,7 @@ module.exports = (sequelize) => {
 			}
 			
 		} catch(err) {
-			if (err.name === "SequelizeDatabaseError") {
+			if (err.message.includes('invalid input syntax')) {
 				ctx.status = 400;
 				ctx.body = 'Invalid team_id format';
 			} else {
@@ -125,7 +127,7 @@ module.exports = (sequelize) => {
 
 	async function deleteTeam (ctx, next) {
 		try {
-			await Team.sync();
+			await Team.sync( {alter: true} );
 
 			// Check if team with given id exists on database
 			const team = await Team.findOne({ 
@@ -148,7 +150,7 @@ module.exports = (sequelize) => {
 			}
 			
 		} catch(err) {
-			if (err.name === "SequelizeDatabaseError") {
+			if (err.message.includes('invalid input syntax')) {
 				ctx.status = 400;
 				ctx.body = 'Invalid team_id format';
 			} else {

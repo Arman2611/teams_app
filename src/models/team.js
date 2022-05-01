@@ -20,9 +20,13 @@ module.exports = (sequelize) => {
 		date_of_foundation:  {
 			type: Sequelize.DATE,
 			allowNull: false
+		},
+		matches:  {
+			type: Sequelize.JSON
 		}
 	}, {
 		timestamps: false
 	});
+	
 	return Team;
 };

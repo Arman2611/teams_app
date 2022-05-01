@@ -9,7 +9,7 @@
 			"name": "Teams",
 			"item": [
 				{
-					"name": "Get all teams list",
+					"name": "Get all teams",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -111,7 +111,7 @@
 					"response": []
 				},
 				{
-					"name": "Alter a team",
+					"name": "Edit a team data",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -161,6 +161,156 @@
 							]
 						},
 						"description": "Delete a team"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Matches",
+			"item": [
+				{
+					"name": "Get all matches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/matches",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"matches"
+							]
+						},
+						"description": "Get all matches"
+					},
+					"response": []
+				},
+				{
+					"name": "Get match data by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/matches/96f356e3-cf70-4bed-8868-95e1cab85860",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"matches",
+								"96f356e3-cf70-4bed-8868-95e1cab85860"
+							]
+						},
+						"description": "Get match data by Id"
+					},
+					"response": []
+				},
+				{
+					"name": "Create match (Man United vs Milan)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"home_team_id\": \"d9ce4772-c723-489b-bbce-a7e84206225a\",\r\n    \"away_team_id\": \"b0357739-66f8-442a-a1d4-8151ab1270ff\",\r\n    \"stadium\": \"Old Trafford\",\r\n    \"date_of_match\": \"2022-05-01T16:30:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/matches",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"matches"
+							]
+						},
+						"description": "Create match"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a match",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"match_id\": \"bca8f05b-0043-4ed8-a885-eea289536aef\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/matches",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"matches"
+							]
+						},
+						"description": "Delete a match"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit a match data",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"match_id\": \"62210f95-bd18-402a-af39-c85c84ea959c\",\r\n    \"match_status\": \"ongoing\",\r\n    \"stadium\": \"Camp Nou\",\r\n    \"date_of_match\": \"2022-06-01T22:30:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/matches",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"matches"
+							]
+						},
+						"description": "Alter a match"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit a match score",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"match_id\": \"62210f95-bd18-402a-af39-c85c84ea959c\",\r\n    \"score_id\": \"e118fe8d-6b71-4045-98c5-34a02f0f95a6\",\r\n    \"match_score\": [2, 1]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/matches",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"matches"
+							]
+						},
+						"description": "Edit a match score"
 					},
 					"response": []
 				}

@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
 		.use(teamRouter.routes())
 		.use(teamRouter.allowedMethods())
 		.use(matchRouter.routes())
-		.use(matchRouter.allowedMethods());
+		.use(matchRouter.allowedMethods())
 	
 	return app;
 };
