@@ -21,6 +21,14 @@ module.exports = (sequelize) => {
 			type: Sequelize.UUID,
 			allowNull: true
 		},
+		home_team_name:  {
+			type: Sequelize.STRING,
+			allowNull: false
+		},
+		away_team_name:  {
+			type: Sequelize.STRING,
+			allowNull: false
+		},
 		match_status:  {
 			type: Sequelize.STRING,
 			defaultValue: 'forthcoming',

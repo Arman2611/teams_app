@@ -1,27 +1,44 @@
 [
 	{
 		"name" : "Manchester United",
+		"abbreviation" : "MUN",
 		"league" : "Premier League",
-		"date_of_foundation": "1902-04-24"
+		"date_of_foundation": "1878-01-01"
+	},
+	{
+		"name" : "Manchester City",
+		"abbreviation" : "MCI",
+		"league" : "Premier League",
+		"date_of_foundation": "1880-01-01"
 	},
 	{
 		"name" : "Liverpool",
+		"abbreviation" : "LFC",
 		"league" : "Premier League",
 		"date_of_foundation": "1892-06-03"
 	},
 	{
-		"name" : "AC Milan",
-		"league" : "Serie A",
-		"date_of_foundation": "1899-12-16"
-	},
-	{
 		"name" : "FC Barcelona",
+		"abbreviation" : "FCB",
 		"league" : "La Liga Santander",
 		"date_of_foundation": "1899-11-29"
 	},
 	{
 		"name" : "Real Madrid",
+		"abbreviation" : "RMA",
 		"league" : "La Liga Santander",
 		"date_of_foundation": "1902-03-06"
+	},
+	{
+		"name" : "AC Milan",
+		"abbreviation" : "ACM",
+		"league" : "Serie A",
+		"date_of_foundation": "1899-12-16"
+	},
+	{
+		"name" : "Juventus",
+		"abbreviation" : "JUV",
+		"league" : "Serie A",
+		"date_of_foundation": "1897-11-01"
 	}
 ]

@@ -27,18 +27,66 @@
 					"response": []
 				},
 				{
+					"name": "Get all teams with search query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/teams?date_of_foundation[from]=1890-01-30&date_of_foundation[to]=1900-12-30",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name,abbreviation,league,date_of_foundation,matches",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Manchester",
+									"disabled": true
+								},
+								{
+									"key": "league",
+									"value": "Premier League",
+									"disabled": true
+								},
+								{
+									"key": "abbreviation",
+									"value": "MUN",
+									"disabled": true
+								},
+								{
+									"key": "date_of_foundation[from]",
+									"value": "1890-01-30"
+								},
+								{
+									"key": "date_of_foundation[to]",
+									"value": "1900-12-30"
+								}
+							]
+						},
+						"description": "Get all teams with search query"
+					},
+					"response": []
+				},
+				{
 					"name": "Get team data by ID",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{HOST}}/teams/02dfa828-c3a6-4e8e-a282-968a77cae341",
+							"raw": "{{HOST}}/teams/1b14d013-3fac-4207-b219-4776f0dc4d0b",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
 								"teams",
-								"02dfa828-c3a6-4e8e-a282-968a77cae341"
+								"1b14d013-3fac-4207-b219-4776f0dc4d0b"
 							]
 						},
 						"description": "Get team data by ID"
@@ -52,7 +100,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Manchester United\",\r\n    \"league\": \"Premier League\",\r\n    \"date_of_foundation\": \"1902-04-24\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Manchester United\",\r\n    \"abbreviation\": \"MUN\",\r\n    \"league\": \"Premier League\",\r\n    \"date_of_foundation\": \"1878-01-01\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,6 +121,141 @@
 					"response": []
 				},
 				{
+					"name": "Create new team (Manchester City)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Manchester City\",\r\n    \"abbreviation\": \"MCI\",\r\n    \"league\": \"Premier League\",\r\n    \"date_of_foundation\": \"1880-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Create new team (Liverpool)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new team (Liverpool)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Liverpool\",\r\n    \"abbreviation\": \"LFC\",\r\n    \"league\": \"Premier League\",\r\n    \"date_of_foundation\": \"1892-06-03\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Create new team (Liverpool)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new team (FC Barcelona)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FC Barcelona\",\r\n    \"abbreviation\": \"FCB\",\r\n    \"league\": \"La Liga Santander\",\r\n    \"date_of_foundation\": \"1899-11-29\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Create new team (Liverpool)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new team (Real Madrid)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Real Madrid\",\r\n    \"abbreviation\": \"RMA\",\r\n    \"league\": \"La Liga Santander\",\r\n    \"date_of_foundation\": \"1902-03-06\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Create new team (Liverpool)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new team (Juventus)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juventus\",\r\n    \"abbreviation\": \"JUV\",\r\n    \"league\": \"Serie A\",\r\n    \"date_of_foundation\": \"1897-11-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/teams",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"teams"
+							]
+						},
+						"description": "Create new team (Liverpool)"
+					},
+					"response": []
+				},
+				{
 					"name": "Create new team (AC Milan)",
 					"request": {
 						"method": "POST",
@@ -83,6 +266,11 @@
 								{
 									"key": "name",
 									"value": "AC Milan",
+									"type": "text"
+								},
+								{
+									"key": "abbreviation",
+									"value": "ACM",
 									"type": "text"
 								},
 								{
@@ -213,7 +401,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"home_team_id\": \"d9ce4772-c723-489b-bbce-a7e84206225a\",\r\n    \"away_team_id\": \"b0357739-66f8-442a-a1d4-8151ab1270ff\",\r\n    \"stadium\": \"Old Trafford\",\r\n    \"date_of_match\": \"2022-05-01T16:30:00Z\"\r\n}",
+							"raw": "{\r\n    \"home_team_id\": \"f1d255bb-05de-44dd-9fb2-2c2a0048217b\",\r\n    \"away_team_id\": \"ea6e6f11-9b55-48dd-a697-82d4a259afd1\",\r\n    \"stadium\": \"Old Trafford\",\r\n    \"date_of_match\": \"2022-05-01T16:30:00Z\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

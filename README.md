@@ -16,7 +16,7 @@ A simple API for sport teams. teams_app is developed on Node.js, using koa.js fr
 # API
 teams_app provides API for doing CRUD operations with teams and matches
 
-	[GET]		/teams			=>	get all teams list
+	[GET]		/teams			=>	get all teams list (accepts query string)
 	[GET]		/teams/:team_id		=>	get a team data
 	[POST]   	/teams			=>	create a team
 	[PATCH]		/teams			=>	edit a team data

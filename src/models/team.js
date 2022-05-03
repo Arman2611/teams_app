@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
 			type: Sequelize.STRING,
 			allowNull: false
 		},
+		abbreviation:  {
+			type: Sequelize.STRING,
+			allowNull: false
+		},
 		league:  {
 			type: Sequelize.STRING,
 			allowNull: false

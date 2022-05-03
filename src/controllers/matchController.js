@@ -27,9 +27,7 @@ module.exports = (sequelize) => {
 			await Match.sync( {alter: true} );
 
 			// Check if match with given id exists on database
-			const match = await Match.findOne({ 
-				where: { match_id: ctx.request.params.match_id }, 
-			});
+			const match = await Match.findByPk(ctx.request.params.match_id);
 
 			// If match is found
 			if (match !== null) {
@@ -72,6 +70,8 @@ module.exports = (sequelize) => {
 				const match = await Match.create({
 					home_team_id: ctx.request.body.home_team_id,
 					away_team_id: ctx.request.body.away_team_id,
+					home_team_name: team1.name,
+					away_team_name: team2.name,
 					stadium: ctx.request.body.stadium,
 					date_of_match: new Date(ctx.request.body.date_of_match).toISOString()
 				});
@@ -127,9 +127,7 @@ module.exports = (sequelize) => {
 			await sequelize.sync();
 
 			// Check if match with given id exists on database
-			const match = await Match.findOne({ 
-				where: { match_id: ctx.request.body.match_id }, 
-			});			
+			const match = await Match.findByPk(ctx.request.body.match_id);			
 
 			// If match is found
 			if (match !== null) {
@@ -138,9 +136,7 @@ module.exports = (sequelize) => {
 				if (ctx.request.body.hasOwnProperty('score_id')) {
 
 					// Check if score with given id exists on database
-					const score = await Score.findOne({ 
-						where: { score_id: ctx.request.body.score_id }, 
-					});
+					const score = await Score.findByPk(ctx.request.body.score_id);
 
 					if (score !== null) {
 
@@ -218,9 +214,7 @@ module.exports = (sequelize) => {
 			await sequelize.sync( {alter: true} );
 
 			// Check if match with given id exists on database
-			const match = await Match.findOne({ 
-				where: { match_id: ctx.request.body.match_id }, 
-			});
+			const match = await Match.findByPk(ctx.request.body.match_id);
 
 			// If match is found
 			if (match !== null) {
