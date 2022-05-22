@@ -2,6 +2,7 @@
 const { Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
+
 	const Team = sequelize.define('Team', {
 		team_id: {
 			type: Sequelize.UUID,
@@ -11,10 +12,12 @@ module.exports = (sequelize) => {
 		},
 		name:  {
 			type: Sequelize.STRING,
+			unique: true,
 			allowNull: false
 		},
 		abbreviation:  {
 			type: Sequelize.STRING,
+			unique: true,
 			allowNull: false
 		},
 		league:  {
@@ -24,12 +27,10 @@ module.exports = (sequelize) => {
 		date_of_foundation:  {
 			type: Sequelize.DATE,
 			allowNull: false
-		},
-		matches:  {
-			type: Sequelize.JSON
 		}
-	}, {
-		timestamps: false
+		// matches:  {
+		// 	type: Sequelize.JSON
+		// }
 	});
 	
 	return Team;

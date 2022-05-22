@@ -9,10 +9,10 @@ module.exports = (sequelize) => {
 			primaryKey: true,
 			allowNull: false
 		},
-		match_id: {
-			type: Sequelize.UUID,
-			allowNull: false
-		},
+		// match_id: {
+		// 	type: Sequelize.UUID,
+		// 	allowNull: false
+		// },
 		home_team_goals: {
 			type: Sequelize.INTEGER,
 			defaultValue: 0,
@@ -22,9 +22,7 @@ module.exports = (sequelize) => {
 			type: Sequelize.INTEGER,
 			defaultValue: 0,
 			allowNull: false
-		},
-	}, {
-		timestamps: false
+		}
 	});
 
 	return Score;

@@ -2,6 +2,7 @@
 const { Sequelize } = require('sequelize');
 
 module.exports = (sequelize) => {
+
 	const Match = sequelize.define('Match', {
 		match_id: {
 			type: Sequelize.UUID,
@@ -46,8 +47,6 @@ module.exports = (sequelize) => {
 			type: Sequelize.DATE,
 			allowNull: false
 		}
-	}, {
-		timestamps: false
 	});
 
 	return Match;

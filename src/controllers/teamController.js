@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 module.exports = (sequelize) => {
 
 	// Models
-	const Team = require('../models/team')(sequelize);
+	const { Team, Match, Score, Team_Matches } = require('../models/index')(sequelize);
 
 	async function getTeamsList (ctx, next) {
 		try {
@@ -14,7 +14,14 @@ module.exports = (sequelize) => {
 			if (Object.keys(ctx.request.query).length === 0) {
 
 				// Read teams list from database
-				const teams = await Team.findAll();
+				const teams = await Team.findAll({
+					include: [
+						{
+							model: Match,
+							as: "matches"
+						}
+					]
+				});
 
 				ctx.status = 200;
 				ctx.body = teams;
@@ -93,13 +100,20 @@ module.exports = (sequelize) => {
 				// Get teams
 				const filteredTeams = await Team.findAll({
 					attributes: attributesArray,
-					where: whereObject
+					where: whereObject,
+					include: [
+						{
+							model: Match,
+							as: "matches"
+						}
+					]
 				})
 
 				ctx.status = 200;
 				ctx.body = filteredTeams;
 			}
 		} catch(err) {
+			console.log(err)
 			ctx.status = 500;
 			ctx.body = 'Failed to read teams list from database'
 		}

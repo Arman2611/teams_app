@@ -6,26 +6,19 @@ async function startServer() {
 		const dotenv = require('dotenv');
 		dotenv.config({ path: './config.env' });
 
-		const {Sequelize, Model, DataTypes} = require('sequelize');
+		// Sequelize configuration
+		const sequelize = require('./src/config/connection')(process);
 
-		// create Sequelize instance for our database
-		const sequelize = new Sequelize(
-			process.env.DATABASE_NAME,
-			process.env.USER_NAME,
-			process.env.DATABASE_PASSWORD,{
-				host: process.env.HOST,
-				dialect: 'postgres',
-				logging: false
-			},
-		);
+		// Models
+		const { Team, Match, Score, Team_Matches } = require('./src/models/index')(sequelize);
 
-		// Checking connection
-		await sequelize.authenticate();
+		// Synchronization with database
+		await sequelize.sync( {alter: true} );
 
 		// Koa app
 		const app = require('./app')(sequelize);
 		
-		// start server
+		// Start server
 		const port = process.env.PORT || 3000;
 		app.listen(port, () => {
 			console.log(`Server working on port ${port}`)

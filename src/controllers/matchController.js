@@ -2,21 +2,25 @@
 module.exports = (sequelize) => {
 
 	// Models
-	const Team = require('../models/team')(sequelize);
-	const Match = require('../models/match')(sequelize);
-	const Score = require('../models/score')(sequelize);
+	const { Team, Match, Score, Team_Matches } = require('../models/index')(sequelize);
 
 	async function getMatchesList (ctx, next) {
 		try {
 			await Match.sync( {alter: true} );
 
 			// Read matches list from database
-			const matches = await Match.findAll();
+			const matches = await Match.findAll({
+				include: [{
+					model: Score,
+					as: 'score'
+				}]
+			});
 
 			ctx.status = 200;
 			ctx.body = matches;
 
 		} catch(err) {
+			console.log(err)
 			ctx.status = 500;
 			ctx.body = 'Failed to read matches list from database'
 		}
@@ -88,8 +92,27 @@ module.exports = (sequelize) => {
 					where: { match_id: match.match_id }
 				});
 
+				// Create record in team_matches junction table
+				await Team_Matches.create({
+					team_id: ctx.request.body.home_team_id,
+					match_id: match.match_id
+				});
+
+
+/*				// Add a row for team1 in junction table
+				await Team_Matches.create({
+					team_id: team1.team_id,
+					match_id: match.match_id
+				});
+
+				// Add a row for team2 in junction table
+				await Team_Matches.create({
+					team_id: team2.team_id,
+					match_id: match.match_id
+				});*/
+
 				// Add match_id team1 matches list
-				await Team.update({
+			/*	await Team.update({
 					matches: JSON.stringify([...JSON.parse(team1.matches), match.match_id])
 				}, {
 					where: { team_id: team1.team_id }
@@ -100,7 +123,7 @@ module.exports = (sequelize) => {
 					matches: JSON.stringify([...JSON.parse(team2.matches), match.match_id])
 				}, {
 					where: { team_id: team2.team_id }
-				});
+				});*/
 
 				await sequelize.sync();
 
@@ -116,6 +139,7 @@ module.exports = (sequelize) => {
 				ctx.status = 400;
 				ctx.body = 'Invalid home_team_id or away_team_id format';
 			} else {
+				console.log(err)
 				ctx.status = 500;
 				ctx.body = 'Failed to create match';
 			}	
